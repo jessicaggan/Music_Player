@@ -65,10 +65,10 @@ class ViewController: UIViewController {
         // To notify the changeLyrics function when textView value changed
         NotificationCenter.default.addObserver(self, selector: #selector(updateChangedLyricstoArray), name: UITextView.textDidChangeNotification, object: nil)
         
-        @objc func updateChangedLyricstoArray() {
-            arrOfMusic[currMusic].lyrics = lyricsTextView.text
-        }
-        
+    }
+    
+    @objc func updateChangedLyricstoArray() {
+        arrOfMusic[currMusic].lyrics = lyricsTextView.text
     }
     
     @IBAction func pressNext(_ sender: Any) {

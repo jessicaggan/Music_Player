@@ -62,7 +62,10 @@ class ViewController: UIViewController {
             favMusicBtn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
         }
         
+        // To notify the changeLyrics function when textView value changed
+        NotificationCenter.default.addObserver(self, selector: #selector(updateChangedLyricstoArray), name: UITextView.textDidChangeNotification, object: nil)
         // To blur background (put this on your ViewController's viewDidLoad())
+        
         let blurEffect = UIBlurEffect(style: .light)
         let blurEffectView = UIVisualEffectView()
         blurEffectView.frame = CGRect(x: 0, y: 0, width: imageBackground.frame.width + 30 , height: imageBackground.frame.height)
@@ -72,6 +75,10 @@ class ViewController: UIViewController {
             blurEffectView.effect = blurEffect
         }
         
+    }
+    
+    @objc func updateChangedLyricstoArray() {
+        arrOfMusic[currMusic].lyrics = lyricsTextView.text
     }
     
     @IBAction func pressNext(_ sender: Any) {
